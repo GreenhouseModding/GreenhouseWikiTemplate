@@ -1,0 +1,35 @@
+---
+interface Props {
+    tool: 'pickaxe' | 'axe' | 'shovel' | 'hoe' | 'sword' | 'shears'
+}
+import axe_icon from "../assets/icons/axe_icon.png"
+import pickaxe_icon from "../assets/icons/pickaxe_icon.png"
+import shovel_icon from "../assets/icons/shovel_icon.png"
+import hoe_icon from "../assets/icons/hoe_icon.png"
+import sword_icon from "../assets/icons/sword_icon.png"
+import shears_icon from "../assets/icons/shears_icon.png"
+
+const toolmap = {
+    "pickaxe": pickaxe_icon,
+    "axe": axe_icon,
+    "shovel": shovel_icon,
+    "hoe": hoe_icon,
+    "sword": sword_icon,
+    "shears": shears_icon
+}
+import { Image } from 'astro:assets'
+const { tool, class:class_list } = Astro.props
+---
+<span  class:list={["not-content", class_list]}>
+    <Image src={toolmap[tool]} alt={tool + " icon"} class="w-12 h-12 subpixel-antialiased toolicon inline aspect-square"/>
+</span>
+
+
+
+<style>
+    .toolicon {
+        image-rendering: pixelated;
+    }
+</style>
+
+

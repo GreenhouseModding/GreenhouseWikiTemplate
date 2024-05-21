@@ -1,0 +1,21 @@
+---
+interface Props {
+    /**
+        * The path to the file to include.
+    */
+    src: string;
+    /**
+        The alt text for the image.
+    */
+    alt: string;
+    caption?: string;
+}
+const { src, alt, caption} = Astro.props;
+import { Image } from 'astro:assets';
+---
+<tr>
+    <td colspan="2">
+        <Image src={src} alt={alt} class="w-1/2 mx-auto"/>
+        {caption && <p class="text-center text-sm text-gray-500 dark:text-gray-400">{caption}</p>}
+    </td>
+</tr>

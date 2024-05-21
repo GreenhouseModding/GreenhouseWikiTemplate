@@ -1,0 +1,37 @@
+---
+title: Tool Icon
+description: Information about the tool icon component
+---
+
+import InfoBox from '../../../components/InfoBox.astro'
+import InfoBoxImage from '../../../components/InfoBoxImage.astro'
+import InfoBoxRow from '../../../components/InfoBoxRow.astro'
+import ToolIcon from '../../../components/ToolIcon.astro'
+
+<InfoBox title="Tool Icon">
+    <InfoBoxRow label="Type" value="Component" />
+    <InfoBoxRow label="Description" value="Component for displaying a tool icon." />
+</InfoBox>
+
+
+# Tool Icon List
+
+<ToolIcon tool="pickaxe"/>
+<ToolIcon tool="axe"/>
+<ToolIcon tool="shovel"/>
+<ToolIcon tool="hoe"/>
+<ToolIcon tool="sword"/>
+<ToolIcon tool="shears"/>
+
+
+# Usage
+```js
+<ToolIcon tool="pickaxe" class=""/>
+```
+Which will render as <ToolIcon tool="pickaxe" class=""/>.
+
+# Props
+| Name  | Description                                   | Type                                              | Default   |
+|-------|-----------------------------------------------|---------------------------------------------------|-----------|
+| tool  | The tool icon to display.                     | String (pickaxe, axe, shovel, hoe, sword, shears) | Required  |
+| class | Additional classes to apply to the component. | String                                            | Undefined |

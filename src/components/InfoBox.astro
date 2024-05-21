@@ -1,0 +1,20 @@
+---
+interface Props {
+    /**
+        The InfoBox title
+    */
+    title?: string;
+}
+const { title } = Astro.props;
+---
+
+<table class="float-right m-4 w-1/2">
+    <tbody>
+    {title && <tr>
+            <th colspan="2">
+                <h1>{title}</h1>
+            </th>
+        </tr>}
+        <slot />
+    </tbody>
+</table>

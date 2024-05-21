@@ -1,0 +1,75 @@
+---
+title: Info Box
+description: Information about the info box components in this Wiki Project.
+---
+
+import InfoBox from '../../../components/InfoBox.astro'
+import InfoBoxImage from '../../../components/InfoBoxImage.astro'
+import InfoBoxRow from '../../../components/InfoBoxRow.astro'
+import grass_infobox from '../../../assets/grass_infobox.png'
+
+<InfoBox title="Info Box">
+    <InfoBoxImage src={grass_infobox} alt="Grass Block" caption="Grass Infobox Example"/>
+    <InfoBoxRow label="Type" value="Component Collection" />
+    <InfoBoxRow label="Description" value="Component that formats information in a small easy to read box." />
+</InfoBox>
+The Info Box is a type of component in this Greenhouse Wiki Template.
+
+The infobox is a component that is build from multiple smaller components. The main component is the root InfoBox component,
+which contains the various children components that make up the infobox.
+
+The root component just takes a title prop, which is displayed at the top of the infobox.
+
+# Example Usage
+
+The code for the Info Box on the right is as follows:
+```js
+<InfoBox title="Info Box">
+    <InfoBoxImage src={grass_infobox} alt="Grass Block" caption="Grass Infobox Example"/>
+    <InfoBoxRow label="Type" value="Component Collection" />
+    <InfoBoxRow label="Description" value="Component that formats information in a small easy to read box." />
+</InfoBox>
+```
+
+# Components
+
+## InfoBox
+This is the root component. It simple takes a title prop, and renders a formatted table with its children components.
+
+### Props
+| Name  | Description                                    | Type   | Default   |
+|-------|------------------------------------------------|--------|-----------|
+| title | The title to display at the top of the infobox | String | Optional  |
+
+## InfoBoxImage
+This component takes an image source and alt text, and renders an image in the infobox.
+
+### Props
+| Name    | Description                            | Type   | Default  |
+|---------|----------------------------------------|--------|----------|
+| src     | The source of the image to display     | String | Required |
+| alt     | The alt text for the image             | String | Required |
+| caption | The caption to display below the image | String | Optional |
+
+## InfoBoxRow
+This component takes a label and a value, and renders a row in the infobox table with the label on the left and the value on the right.
+
+### Props
+| Name  | Description                                   | Type                                              | Default   |
+|-------|-----------------------------------------------|---------------------------------------------------|-----------|
+| label | The label to display on the left side of row  | String                                            | Required  |
+| value | The value to display on the right side of row | String                                            | Required  |
+
+### Slots
+These slots can be used to put whatever elements you want at the label and value positions.
+
+
+| Name  | Description                                   |
+|-------|-----------------------------------------------|
+| label | Slot for custom label component               |
+| value | Slot for custom value component               |
+
+
+
+
+

@@ -1,0 +1,30 @@
+---
+interface Props {
+    /**
+     * The label of the table row, optional
+     */
+    label?: string;
+    /**
+     * The value of the table row, optional
+     */
+    value?: string;
+
+}
+var { label, value } = Astro.props;
+label = label || "";
+value = value || "";
+
+---
+
+<tr class="w-full">
+    <th class="" scope="row">
+        <slot name="label" />
+        { label }
+    </th>
+    <slot />
+    <td>
+        { value }
+        <slot name="value" />
+    </td>
+
+</tr>
