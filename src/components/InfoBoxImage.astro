@@ -1,9 +1,10 @@
 ---
+import type {ImageMetadata} from "astro";
 interface Props {
     /**
         * The path to the file to include.
     */
-    src: string;
+    src: ImageMetadata;
     /**
         The alt text for the image.
     */
