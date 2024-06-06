@@ -25,7 +25,7 @@ for (const image of images) {
         {
             <Tabs>
                 {images.map((image, index) => (
-                    <TabItem key={index} label={image.name}>
+                    <TabItem label={image.name}>
                         <Image src={imageSources[image.src]()} alt={image.alt} />
                         {image.caption && <p>{image.caption}</p>}
                     </TabItem>
