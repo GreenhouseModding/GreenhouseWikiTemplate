@@ -1,0 +1,35 @@
+---
+title: Color Text
+description: Information about the color text component
+---
+
+import InfoBox from '../../../components/InfoBox.astro'
+import InfoBoxRow from '../../../components/InfoBoxRow.astro'
+import ColorText from '../../../components/ColorText.astro'
+
+<InfoBox title="Color Text">
+    <InfoBoxRow label="Type" value="Component" />
+    <InfoBoxRow label="Description" value="Component for displaying a color code, along with a preview of it." />
+</InfoBox>
+
+The Color Text component is used to inline a color code, along with a small box to the left of the text displaying the color.
+
+It works based on the css color code, so any valid css color code can be used.
+
+
+
+# Usage
+```js
+<ColorText color="#79FC92" />
+<ColorText color="red" />
+<ColorText color="rgb(0, 0, 255)" />
+```
+Which will render as:
+<ColorText color="#79FC92" />
+<ColorText color="red" />
+<ColorText color="rgb(0, 0, 255)" />
+
+# Props
+| Name  | Description                    | Type   | Default  |
+|-------|--------------------------------|--------|----------|
+| color | The css  color code to display | String | Required |

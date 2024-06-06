@@ -21,7 +21,7 @@ const toolmap = {
 import { Image } from 'astro:assets'
 const { tool, class:class_list } = Astro.props
 ---
-<span  class:list={["not-content", class_list]}>
+<span class:list={["not-content", class_list]}>
     <Image src={toolmap[tool]} alt={tool + " icon"} class="w-12 h-12 subpixel-antialiased toolicon inline aspect-square"/>
 </span>
 

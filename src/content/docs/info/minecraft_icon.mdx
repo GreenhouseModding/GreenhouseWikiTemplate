@@ -1,0 +1,31 @@
+---
+title: Minecraft Icon
+description: Information about the Minecraft Icon component.
+---
+
+import InfoBox from '../../../components/InfoBox.astro'
+import InfoBoxRow from '../../../components/InfoBoxRow.astro'
+import MinecraftIcon from '../../../components/MinecraftIcon.astro'
+
+<InfoBox title="Minecraft Icon">
+    <InfoBoxRow label="Type" value="Component" />
+    <InfoBoxRow label="Description" value="Component for displaying a minecraft icon." />
+</InfoBox>
+
+
+# Minecraft Icon List
+
+- food <MinecraftIcon icon="food" />
+- heart <MinecraftIcon icon="heart" />
+
+# Usage
+```js
+<MinecraftIcon icon="food" size="2em"/>
+```
+Which will render as <MinecraftIcon icon="food" size="2em"/>
+
+# Props
+| Name  | Description                                   | Type                                              | Default   |
+|-------|-----------------------------------------------|---------------------------------------------------|-----------|
+| icon  | The name of the icon to display               | Enum: "food", "heart"                             | Required  |
+| size  | The size of the icon to display               | String                                            | Optional  |

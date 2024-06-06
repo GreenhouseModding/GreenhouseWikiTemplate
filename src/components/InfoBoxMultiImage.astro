@@ -1,0 +1,36 @@
+---
+import type {ImageMetadata} from "astro";
+import { Image } from 'astro:assets';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+interface ImageInfo {
+    src: string;
+    alt: string;
+    name: string;
+    caption?: string;
+}
+
+interface Props {
+    images: ImageInfo[];
+}
+const { images } = Astro.props;
+
+const imageSources = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif}')
+for (const image of images) {
+    if (!imageSources[image.src]) throw new Error(`"${image.src}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
+}
+---
+<tr>
+    <td colspan="2">
+        {
+            <Tabs>
+                {images.map((image, index) => (
+                    <TabItem key={index} label={image.name}>
+                        <Image src={imageSources[image.src]()} alt={image.alt} />
+                        {image.caption && <p>{image.caption}</p>}
+                    </TabItem>
+                ))}
+            </Tabs>
+        }
+    </td>
+</tr>

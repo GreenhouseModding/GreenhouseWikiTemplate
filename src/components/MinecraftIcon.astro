@@ -1,0 +1,38 @@
+---
+interface Props {
+    icon: 'heart' | 'food'
+    /**
+    * The size of the icon in css units (px, em, rem, etc)
+    */
+    size: string
+}
+import food from "../assets/icons/food.png"
+import heart from "../assets/icons/heart.png"
+
+const { icon, size = "1em" } = Astro.props;
+
+const getIcon = () => {
+    switch (icon) {
+        case 'heart':
+            return heart;
+        case 'food':
+            return food;
+        default:
+            return null;
+    }
+}
+import { Image } from 'astro:assets'
+
+---
+
+<span style={{ width: size, height: size }} class="inline-block icon">
+    <Image src={getIcon()} alt={icon} class="w-full h-full" />
+</span>
+
+<style>
+    .icon {
+        image-rendering: pixelated;
+    }
+</style>
+
+

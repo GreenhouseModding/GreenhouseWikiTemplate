@@ -6,10 +6,10 @@ description: Information about the info box components in this Wiki Project.
 import InfoBox from '../../../components/InfoBox.astro'
 import InfoBoxImage from '../../../components/InfoBoxImage.astro'
 import InfoBoxRow from '../../../components/InfoBoxRow.astro'
-import grass_infobox from '../../../assets/grass_infobox.png'
+import InfoBoxMultiImage from '../../../components/InfoBoxMultiImage.astro'
 
 <InfoBox title="Info Box">
-    <InfoBoxImage src={grass_infobox} alt="Grass Block" caption="Grass Infobox Example"/>
+    <InfoBoxImage src="/src/assets/grass_infobox.png" alt="Grass Block" caption="Grass Infobox Example"/>
     <InfoBoxRow label="Type" value="Component Collection" />
     <InfoBoxRow label="Description" value="Component that formats information in a small easy to read box." />
 </InfoBox>
@@ -25,7 +25,7 @@ The root component just takes a title prop, which is displayed at the top of the
 The code for the Info Box on the right is as follows:
 ```js
 <InfoBox title="Info Box">
-    <InfoBoxImage src={grass_infobox} alt="Grass Block" caption="Grass Infobox Example"/>
+    <InfoBoxImage src="/src/assets/grass_infobox.png" alt="Grass Block" caption="Grass Infobox Example"/>
     <InfoBoxRow label="Type" value="Component Collection" />
     <InfoBoxRow label="Description" value="Component that formats information in a small easy to read box." />
 </InfoBox>
@@ -69,6 +69,32 @@ These slots can be used to put whatever elements you want at the label and value
 | label | Slot for custom label component               |
 | value | Slot for custom value component               |
 
+## InfoboxMultiImage
+<InfoBox title="Info Box">
+    <InfoBoxMultiImage images={[
+        {src: "/src/assets/grass_infobox.png", alt: "Grass Block", caption: "Grass Infobox Example", name: "Grass Infobox"},
+        {src: "/src/assets/infobox_infobox.png", alt: "Info Box", caption: "Info Box Infobox Example", name: "Info Box Infobox"}
+    ]}/>
+    <InfoBoxRow label="Type" value="Component Collection" />
+    <InfoBoxRow label="Description" value="Component that formats information in a small easy to read box." />
+</InfoBox>
+This component is similar to the InfoBoxImage component, but it takes multiple images and displays them in a row.
+
+
+
+
+### Props
+| Name   | Description                          | Type        | Default  |
+|--------|--------------------------------------|-------------|----------|
+| images | An array of image sources to display | ImageInfo[] | Required |
+
+### ImageInfo
+| Name    | Description                                  | Type   | Default  |
+|---------|----------------------------------------------|--------|----------|
+| src     | The source of the image to display           | String | Required |
+| alt     | The alt text for the image                   | String | Required |
+| caption | The caption to display below the image       | String | Optional |
+| name    | The name of the image used for the tab title | String | Optional |
 
 
 

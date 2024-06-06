@@ -1,0 +1,16 @@
+---
+interface Props {
+    /**
+    * The color to show next to the text.
+    */
+    color: string;
+}
+
+const { color } = Astro.props;
+---
+
+<span>
+    <span style={{ display: 'inline-block', width: '1em', height: '1em', backgroundColor: color }} class="border border-gray-500 rounded-md"></span>
+    {color}
+</span>
+

@@ -7,14 +7,28 @@ import InfoBox from '../../../components/InfoBox.astro'
 import InfoBoxImage from '../../../components/InfoBoxImage.astro'
 import InfoBoxRow from '../../../components/InfoBoxRow.astro'
 import ToolIcon from '../../../components/ToolIcon.astro'
-import grass_block from '../../../assets/grass_block.png'
+import MinecraftIcon from '../../../components/MinecraftIcon.astro'
+import ColorText from '../../../components/ColorText.astro'
 
 <InfoBox title="Grass Block">
-    <InfoBoxImage src={grass_block} alt="Grass Block" />
+    <InfoBoxImage src="/src/assets/grass_block.png" alt="Grass Block" />
     <InfoBoxRow label="Renewable" value="Yes" />
     <InfoBoxRow label="Stackable" value="Yes (64)" />
     <InfoBoxRow label="Tool">
         <ToolIcon tool="shovel" slot="value" />
+    </InfoBoxRow>
+    <InfoBoxRow label="Health">
+        <span slot="value">
+            <MinecraftIcon icon="heart" />x8
+        </span>
+    </InfoBoxRow>
+    <InfoBoxRow label="Hunger">
+        <span slot="value">
+            <MinecraftIcon icon="food" />x0
+        </span>
+    </InfoBoxRow>
+    <InfoBoxRow label="Color">
+        <ColorText color="#7CBD6B" slot="value" />
     </InfoBoxRow>
     <InfoBoxRow label="MC Wiki Link">
         <a href="https://minecraft.fandom.com/wiki/Grass_Block" target="_blank" slot="value">Here</a>

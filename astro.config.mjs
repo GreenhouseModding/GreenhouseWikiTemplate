@@ -14,13 +14,8 @@ export default defineConfig({
       github: 'https://github.com/withastro/starlight'
     },
     sidebar: [{
-      label: 'Guides',
-      autogenerate: { directory: 'guides' },
-    }, {
-      label: 'Reference',
-      autogenerate: {
-        directory: 'reference'
-      }
+      label: 'Examples',
+      autogenerate: { directory: 'examples' },
     },{
       label: 'Information',
       autogenerate: {
