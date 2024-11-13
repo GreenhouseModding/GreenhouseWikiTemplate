@@ -1,0 +1,77 @@
+---
+title: Crafting Recipe
+description: Information about the Minecraft Icon component.
+---
+
+
+import CraftingRecipe from '../../../components/CraftingRecipe.astro'
+import SmeltingRecipe from '../../../components/SmeltingRecipe.astro'
+import ItemSlot from '../../../components/ItemSlot.astro'
+import {Item, CraftingRecipeSimpleBuilder, SmeltingRecipeBuilder} from "../../../scripts/RecipeHelper.ts";
+
+
+
+export const TestRecipe = CraftingRecipeSimpleBuilder.create()
+    .setPattern(" S ", "SGS", " S ")
+    .setIngredient("S", Item.of("Amethyst Shard", "amethyst_shard.png", 1, "epic"))
+    .setIngredient("G", Item.of("Glass", "glass.png", 1))
+    .setOutput(Item.of("Tinted Glass", "tinted_glass.png", 2))
+    .build()
+
+export const SmeltingTestRecipe = SmeltingRecipeBuilder.create()
+    .setIngredient(Item.of("Amethyst Shard", "amethyst_shard.png", 1, "uncommon"))
+    .setResult(Item.of("Tinted Glass", "tinted_glass.png", 1))
+    .setExperience(0.1)
+    .build()
+
+
+<CraftingRecipe recipe={TestRecipe} />
+
+The code for the above recipe is:
+
+```tsx
+export const TestRecipe = CraftingRecipeSimpleBuilder.create()
+    .setPattern(" S ", "SGS", " S ")
+    .setIngredient("S", Item.of("Amethyst Shard", "amethyst_shard.png", 1, "epic"))
+    .setIngredient("G", Item.of("Glass", "glass.png", 1))
+    .setOutput(Item.of("Tinted Glass", "tinted_glass.png", 2))
+    .build()
+
+
+<CraftingRecipe recipe={TestRecipe} />
+```
+
+
+<SmeltingRecipe recipe={SmeltingTestRecipe} />
+
+The code for the above recipe is:
+
+```tsx
+export const SmeltingTestRecipe = SmeltingRecipeBuilder.create()
+    .setIngredient(Item.of("Amethyst Shard", "amethyst_shard.png", 1, "uncommon"))
+    .setResult(Item.of("Tinted Glass", "tinted_glass.png", 1))
+    .setExperience(0.1)
+    .build()
+
+<SmeltingRecipe recipe={SmeltingTestRecipe} />
+```
+
+
+# Item Slot
+<ItemSlot item={
+    Item.of("Stone", "shovel_icon.png", 1, "rare")
+        .withTooltip("C418 - cat")
+        .withTooltip("Night Vision (3:00)", "blue")
+        .withTooltip("Curse of Binding", "red")
+} />
+
+The code for the above item slot is:
+
+```tsx
+<ItemSlot item={
+    Item.of("Stone", "shovel_icon.png", 1, "rare")
+        .withTooltip("C418 - cat")
+        .withTooltip("Night Vision (3:00)", "blue")
+        .withTooltip("Curse of Binding", "red")
+} />
+```

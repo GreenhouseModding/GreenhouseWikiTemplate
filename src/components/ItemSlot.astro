@@ -1,0 +1,112 @@
+---
+import {Item, ToolTip} from "../scripts/RecipeHelper";
+import type {ImageMetadata} from "astro";
+
+interface Props {
+    item?: Item
+    outputSlot?: boolean
+}
+
+let { item, outputSlot } = Astro.props;
+
+outputSlot = outputSlot || false;
+
+const size = outputSlot ? "w-12 h-12 p-2" : "w-8 h-8";
+
+// Map of rarity to color
+const rarityColors = {
+    "common": "text-white",
+    "uncommon": "text-yellow-200",
+    "rare": "text-cyan-300",
+    "epic": "text-fuchsia-500",
+}
+const tooltipColors = {
+    "default": "text-neutral-400",
+    "red": "text-red-400",
+    "blue": "text-blue-500"
+}
+
+let rarity = "common";
+let image_location = "";
+let tooltips: ToolTip[] = []
+let count = 1;
+if (item) {
+    image_location = "/src/assets/items/" + item.image;
+
+    const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/items/*.{jpeg,jpg,png,gif}')
+    if (!images[image_location]) throw new Error(`"${image_location}" does not exist in glob: "src/assets/items/*.{jpeg,jpg,png,gif}"`);
+    rarity = item.rarity;
+    tooltips = item.tooltips;
+    count = item.quantity;
+}
+
+---
+
+
+<span class:list={
+    [
+        "inline-block dark:bg-mc-gui-slot-dark bg-mc-gui-slot border-t-neutral-600 border-2 border-l-neutral-600 border-b-white border-r-white dark:border-b-neutral-500 dark:border-r-neutral-500 dark:border-l-neutral-800 dark:border-t-neutral-800 not-content",
+        size,
+    ]
+} data-item-slot>
+    { item ? <div class="relative">
+        <img src={image_location} alt={item.name} class="w-8 h-8 item_slot_image"/>
+        { count > 1 ? <p class="text-white text-md absolute bottom-0 right-0">{count}</p> : null
+            }
+
+    </div> : null }
+    { item ? <span class:list={
+        [
+            "hidden absolute bg-black border border-purple-950 px-2 rounded-sm z-20",
+            rarityColors[rarity],
+        ]
+    }>
+        { item ? item.name : "Empty" }
+        { tooltips.map((tooltip, index) => {
+            return <p class:list={[tooltipColors[tooltip.type], "my-0"]}>{tooltip.text}</p>
+        })}
+
+    </span> : null }
+</span>
+
+<style>
+    .item_slot_image {
+        image-rendering: pixelated;
+        margin: -2px
+
+    }
+
+
+</style>
+
+<script>
+    const itemSlots = document.querySelectorAll('[data-item-slot]');
+
+    itemSlots.forEach(slot => {
+        slot.addEventListener('mouseenter', (event: MouseEvent) => {
+            const item = slot.querySelector('img');
+            const name = slot.querySelector('span');
+            if (name == null) return;
+
+            if (item) {
+                name.classList.remove('hidden');
+            }
+        });
+        slot.addEventListener('mouseleave', (event: MouseEvent) => {
+            const name = slot.querySelector('span');
+            if (name == null) return;
+            name.classList.add('hidden');
+        });
+
+        // Make the name follow the mouse
+        slot.addEventListener('mousemove', (event: MouseEvent) => {
+            const name = slot.querySelector('span');
+            if (name == null) return;
+            const nameHeight = name.offsetHeight;
+            name.style.top = `${event.pageY - nameHeight}px`; // Adjusted to place above the mouse
+            name.style.left = `${event.pageX + 10}px`;
+        });
+    });
+
+</script>
+

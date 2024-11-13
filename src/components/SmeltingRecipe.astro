@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets'
+import {Item, SmeltingRecipe} from "../scripts/RecipeHelper";
+import { Icon } from 'astro-icon/components';
+import ItemSlot from "../components/ItemSlot.astro";
+import flames from "../assets/icons/furnace_flames.png";
+
+interface Props {
+    recipe: SmeltingRecipe
+}
+
+const { recipe } = Astro.props
+
+const fuel = Item.of("Any fuel", "fuel_icon.png", 1);
+
+---
+
+<div class="inline-flex flex-row gap-x-3 dark:bg-mc-gui-base-dark bg-mc-gui-base not-content p-2 border-2 border-b-neutral-600 border-r-neutral-600 dark:border-t-neutral-400 dark:border-l-neutral-400 dark:border-b-black dark:border-r-black">
+    <span class="flex flex-col">
+        <ItemSlot item={recipe.ingredient} />
+        <Image src={flames} class="w-8 h-8 flame p-1.5" alt="Smelting flames" />
+        <ItemSlot item={fuel} />
+    </span>
+    <Icon name="recipe_arrow" class="inline-block mt-7" width="40px" height="40px"/>
+    <div class="absolute ml-10 z-10">
+        {recipe.experience} XP
+    </div>
+    <span class="mt-5">
+        <ItemSlot item={recipe.result} outputSlot="true"/>
+    </span>
+
+
+</div>
+
+<style>
+    .flame {
+        image-rendering: pixelated;
+    }
+</style>

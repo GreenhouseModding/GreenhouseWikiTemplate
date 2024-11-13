@@ -1,0 +1,36 @@
+---
+import { Icon } from 'astro-icon/components';
+import ItemSlot from "../components/ItemSlot.astro";
+import {CraftingRecipe} from "../scripts/RecipeHelper";
+
+interface Props {
+    recipe: CraftingRecipe
+}
+
+const { recipe } = Astro.props
+---
+
+
+<span class="inline-flex flex-row gap-x-3 dark:bg-mc-gui-base-dark bg-mc-gui-base not-content p-2 border-2 border-b-neutral-600 border-r-neutral-600 dark:border-t-neutral-400 dark:border-l-neutral-400 dark:border-b-black dark:border-r-black">
+    <span class="inline-block align-top">
+        <span class="grid grid-cols-3">
+            <ItemSlot item={recipe.ingredients[0]}/>
+            <ItemSlot item={recipe.ingredients[1]}/>
+            <ItemSlot item={recipe.ingredients[2]}/>
+            <ItemSlot item={recipe.ingredients[3]}/>
+            <ItemSlot item={recipe.ingredients[4]}/>
+            <ItemSlot item={recipe.ingredients[5]}/>
+            <ItemSlot item={recipe.ingredients[6]}/>
+            <ItemSlot item={recipe.ingredients[7]}/>
+            <ItemSlot item={recipe.ingredients[8]}/>
+        </span>
+    </span>
+    <Icon name="recipe_arrow" class="inline-block mt-7" width="40px" height="40px"/>
+    <span class="mt-5">
+        <span class="align-middle">
+            <ItemSlot item={recipe.result} outputSlot="true"/>
+        </span>
+    </span>
+
+
+</span>

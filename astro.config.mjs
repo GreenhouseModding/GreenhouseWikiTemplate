@@ -1,11 +1,12 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import icon from "astro-icon";
 
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [starlight({
+  integrations: [icon(), starlight({
     title: 'My Docs',
     customCss: [
         './src/tailwind.css'
